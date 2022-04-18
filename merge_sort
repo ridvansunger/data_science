@@ -30,3 +30,63 @@ Time complexity:
 Bu özyinelemeli (recursive) bir fonksiyon olduğu için sürekli kendini çağırarak hep diziyi ikiye bölüyor. 
 Böylelikle en fazla log2(N) kere bölme işlemi yapılmış oluyor. Her bölünmüş dizinin Merge işlemi içinde dizinin uzunluğu olan N işlem yapıldığı için
 bu algoritmanın karmaşıklık maliyeti büyük O notasyonunda O(N * log(N)) oluyor. 
+
+
+
+
+#
+ static void merge(List<double> arr, int l, int m, int r)
+ {
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+   double[] L = new double[n1];
+   double[] R = new double[n2];
+
+   for (int t = 0; t < n1; ++t)
+    L[t] = arr[l + t];
+   for (int z = 0; z < n2; ++z)
+    R[z] = arr[m + 1 + z];
+
+    int i = 0, j = 0;
+    int k = l;
+    while (i < n1 && j < n2)
+    {
+      if (L[i] <= R[j])
+     {
+      arr[k] = L[i];
+       i++;
+     }
+     else
+    {
+      arr[k] = R[j];
+      j++;
+    }
+    k++;
+  }
+
+  while (i < n1)
+  {
+    arr[k] = L[i];
+    i++;
+    k++;
+  }
+
+   while (j < n2)
+   {
+     arr[k] = R[j];
+     j++;
+     k++;
+   }
+ }
+ public static void Mergesort(List<double> arr, int l, int r)
+ {
+    if (l < r)
+    {
+     int m = (l + r) / 2;
+     Mergesort(arr, l, m);
+     Mergesort(arr, m + 1, r);
+
+     merge(arr, l, m, r);
+   }
+  }
