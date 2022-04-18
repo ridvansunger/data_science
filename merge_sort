@@ -1,0 +1,32 @@
+#Proje 2
+[16,21,11,8,12,22] -> Merge Sort
+
+Yukarıdaki dizinin sort türüne göre aşamalarını yazınız.
+Big-O gösterimini yazınız.
+
+
+#Çözüm
+MERGE SORT
+
+Merge sort’un özelliği problemi parçalara bölmesidir ve problem parçalara bölündüğünde zaman karmaşıklığı logaritmik zamana iner. 
+Bu da exponiensel olanlara göre çok daha iyi sonuç vermesi anlamına gelmektedir. 
+
+Merge sort’ta ana mantık parçala ve fethet’dir. Parçala ve fethet’in mantığı ;
+1. Problem küçük parçalara bölünür.
+2. Daha küçük parçalara bölünen problemler çözülür.
+3. Çözülmüş küçük parçalar tekrar birleştirilir
+Divide and Conquer yaklaşımının en temel örneklerinden biri olan Merge Sort, sıralayacağımız diziyi her seferinde ikiye bölüp ayrı ayrı sıraladıktan sonra 
+birleştirme mantığına dayanmaktadır. Biraz daha ayrıntılı anlatmam gerekirse: Algoritmamız iki fonksiyondan oluşuyor.
+Birincisi girilen diziyi ikiye bölüp ayrı ayrı sıralamayı sağlarken diğeri sıralanmış iki diziyi birleştirmemizi sağlıyor.
+
+16, 21, 11 | 8, 12, 22 (n/2)
+16 | 21, 11 | 8, 12 | 22 (n/2)
+16 | 21 | 11 | 8 | 12 | 22 (n/2)
+16 | 11, 21 | 8, 12 | 22 (n/2)
+11, 16, 21 | 8, 12 , 22 (n/2)
+8, 11, 12, 16, 21, 22 (n/2)
+
+Time complexity:
+Bu özyinelemeli (recursive) bir fonksiyon olduğu için sürekli kendini çağırarak hep diziyi ikiye bölüyor. 
+Böylelikle en fazla log2(N) kere bölme işlemi yapılmış oluyor. Her bölünmüş dizinin Merge işlemi içinde dizinin uzunluğu olan N işlem yapıldığı için
+bu algoritmanın karmaşıklık maliyeti büyük O notasyonunda O(N * log(N)) oluyor. 
